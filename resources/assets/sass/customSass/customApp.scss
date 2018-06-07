@@ -17,5 +17,11 @@
     .navbar-right{
         margin-right: -26px;
     }
+    #user{
+        color: $body-bg;
+        &:hover{
+            color: $body-bg;
+        }
+    }
     
 }
