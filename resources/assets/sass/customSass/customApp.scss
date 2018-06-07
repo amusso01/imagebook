@@ -1,0 +1,21 @@
+@import "mixin";
+
+#topBar{
+    #main_logo{
+        width: 50px;
+        margin-top: 12px;
+        float: left;
+    }
+    .navbar-left{
+        h2{
+            display: inline-block;
+            float: none;
+            margin-top: 20px;
+            padding-left: 10px;
+        }
+    }
+    .navbar-right{
+        margin-right: -26px;
+    }
+    
+}
