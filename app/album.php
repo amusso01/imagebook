@@ -10,8 +10,8 @@ class album extends Model
 
     protected $fillable =array('user_id','album_name','description','cover_image');
     
-    public function Images(){
-        return $this->has_many('images');
+    public function images(){
+        return $this->has_many('App/image');
     }
 
 }

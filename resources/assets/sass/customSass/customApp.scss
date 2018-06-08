@@ -1,5 +1,6 @@
 @import "mixin";
 
+// top nav bar
 #topBar{
     #main_logo{
         width: 50px;
@@ -24,4 +25,14 @@
         }
     }
     
+}
+
+//auth
+#auth-page{
+    .auth-header{
+        margin-bottom: 20px;   
+    }
+    #auth-form{
+        margin-top: 20px; 
+    }
 }
