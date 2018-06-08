@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,7 +15,7 @@ use Illuminate\Support\Facades\Auth;
 */
 
 
-//Auth::guest ? controller@welcome : controller@home
+
 Route::get('/', function () {
     if(Auth::guest()){
         return view('welcome');
@@ -25,3 +26,4 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::resource('/home/albums', 'ALbumController');
