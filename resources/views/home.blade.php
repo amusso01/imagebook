@@ -2,26 +2,76 @@
 
 @section('content')
 
+@include('inc.dashboard')
 
 
 
-{{-- <div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Dashboard</div>
+<h1 class="my-4 text-center text-lg-left">Album Gallery</h1>
 
-                <div class="panel-body">
-                    @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+<div class="row text-center text-lg-left">
 
-                    You are logged in!
-                </div>
-            </div>
-        </div>
-    </div>
-</div> --}}
+  <div class="col-lg-3 col-md-4 col-xs-6">
+    <a href="#" class="d-block mb-4 h-100">
+      <img class="img-fluid img-thumbnail" src="http://placehold.it/400x300" alt="">
+    </a>
+  </div>
+  <div class="col-lg-3 col-md-4 col-xs-6">
+    <a href="#" class="d-block mb-4 h-100">
+      <img class="img-fluid img-thumbnail" src="http://placehold.it/400x300" alt="">
+    </a>
+  </div>
+  <div class="col-lg-3 col-md-4 col-xs-6">
+    <a href="#" class="d-block mb-4 h-100">
+      <img class="img-fluid img-thumbnail" src="http://placehold.it/400x300" alt="">
+    </a>
+  </div>
+  <div class="col-lg-3 col-md-4 col-xs-6">
+    <a href="#" class="d-block mb-4 h-100">
+      <img class="img-fluid img-thumbnail" src="http://placehold.it/400x300" alt="">
+    </a>
+  </div>
+  <div class="col-lg-3 col-md-4 col-xs-6">
+    <a href="#" class="d-block mb-4 h-100">
+      <img class="img-fluid img-thumbnail" src="http://placehold.it/400x300" alt="">
+    </a>
+  </div>
+  <div class="col-lg-3 col-md-4 col-xs-6">
+    <a href="#" class="d-block mb-4 h-100">
+      <img class="img-fluid img-thumbnail" src="http://placehold.it/400x300" alt="">
+    </a>
+  </div>
+  <div class="col-lg-3 col-md-4 col-xs-6">
+    <a href="#" class="d-block mb-4 h-100">
+      <img class="img-fluid img-thumbnail" src="http://placehold.it/400x300" alt="">
+    </a>
+  </div>
+  <div class="col-lg-3 col-md-4 col-xs-6">
+    <a href="#" class="d-block mb-4 h-100">
+      <img class="img-fluid img-thumbnail" src="http://placehold.it/400x300" alt="">
+    </a>
+  </div>
+  <div class="col-lg-3 col-md-4 col-xs-6">
+    <a href="#" class="d-block mb-4 h-100">
+      <img class="img-fluid img-thumbnail" src="http://placehold.it/400x300" alt="">
+    </a>
+  </div>
+  <div class="col-lg-3 col-md-4 col-xs-6">
+    <a href="#" class="d-block mb-4 h-100">
+      <img class="img-fluid img-thumbnail" src="http://placehold.it/400x300" alt="">
+    </a>
+  </div>
+  <div class="col-lg-3 col-md-4 col-xs-6">
+    <a href="#" class="d-block mb-4 h-100">
+      <img class="img-fluid img-thumbnail" src="http://placehold.it/400x300" alt="">
+    </a>
+  </div>
+  <div class="col-lg-3 col-md-4 col-xs-6">
+    <a href="#" class="d-block mb-4 h-100">
+      <img class="img-fluid img-thumbnail" src="http://placehold.it/400x300" alt="">
+    </a>
+  </div>
+</div>
+
+@include ('inc.pagination')
+
 @endsection
