@@ -3,12 +3,13 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-8 col-md-offset-2" id="auth-page">
+            <div class="login-header">
+                <h2 class="my-4 text-center text-lg-left">Register</h2>
+            </div>
             <div class="panel panel-default">
-                <div class="panel-heading">Register</div>
-
                 <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="{{ route('register') }}">
+                    <form id="auth-form" class="form-horizontal" method="POST" action="{{ route('register') }}">
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">

@@ -8375,3 +8375,11 @@ button.close {
   color: #f5f8fa;
 }
 
+#auth-page .auth-header {
+  margin-bottom: 20px;
+}
+
+#auth-page #auth-form {
+  margin-top: 20px;
+}
+
