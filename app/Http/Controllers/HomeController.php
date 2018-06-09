@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Album;
+use App\Http\Controllers\AlbumController;
 
 class HomeController extends Controller
 {
@@ -25,7 +25,7 @@ class HomeController extends Controller
     public function index()
     {
 
-        $albums= Album::get();
+        $albums= AlbumController::getAlbum();
         
         return view('home')->with('albums', $albums);
     }

@@ -987,6 +987,10 @@ window.Vue = __webpack_require__(35);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+var truncateString = function truncateString(str, num) {
+  return str.length > num ? str.slice(0, num > 3 ? num - 3 : num) + '...' : str;
+};
+
 $(document).ready(function () {
   $('[data-toggle="tooltip"]').tooltip();
 });
