@@ -20,7 +20,7 @@ Route::get('/', function () {
     if(Auth::guest()){
         return view('welcome');
     }
-    return view('home');
+    return redirect('home');
 });
 
 Auth::routes();
@@ -28,3 +28,4 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('/home/albums', 'AlbumController');
 Route::post('/home/albums/store', 'AlbumController@store');
+Route::get('/home/albums/{$id})', 'AlbumController@show');
