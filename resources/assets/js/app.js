@@ -7,6 +7,7 @@
 
 require('./bootstrap');
 
+
 window.Vue = require('vue');
 
 /**
@@ -15,8 +16,13 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+const truncateString = (str, num) =>
+str.length > num ? str.slice(0, num > 3 ? num - 3 : num) + '...' : str;
+
 $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip();
+
+
 });
 
 Vue.component('example-component', require('./components/ExampleComponent.vue'));

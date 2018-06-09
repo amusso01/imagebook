@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Album;
+use Intervention\Image\Facades\Image;
+
 
 
 class AlbumController extends Controller
@@ -14,6 +16,14 @@ class AlbumController extends Controller
     public function __construct()
     {
     $this->middleware('auth');
+    }
+
+    //get Album
+    public static function getAlbum(){
+
+        $albums=Album::where('user_id', Auth::id() )->get();
+
+        return $albums;
     }
     
     //Create
@@ -42,7 +52,7 @@ class AlbumController extends Controller
         $name = $request->input('name');
         $description = $request->input('description');
         $cover_image = $request->file('cover_image');
-        $user_id = Auth::id();
+        $user_id = Auth::user()->id;
         
         
         //Check if cover image upload
@@ -58,8 +68,12 @@ class AlbumController extends Controller
             
             //Create new filename to store
             $filename_to_store = $filename.'_'.time().'.'.$extension;
+            
             //Upload to path
-            $path = $cover_image->storeAs('public/album_covers', $filename_to_store);
+            $image=Image::make($request->file('cover_image'))->fit(300)->save(storage_path('app/public/album_covers/'.$filename_to_store));
+
+
+            // $path = $image->storeAs('public/album_covers', $filename_to_store);
         }else{
             $filename_to_store = 'albumCover.jpg';
         }
@@ -72,10 +86,8 @@ class AlbumController extends Controller
         $album->cover_image = $filename_to_store;
         
 
-            
+        $album->save();
 
-            $album->save();
-
-            return redirect('home/albums/create')->with('success', 'Album succesfully created');
+        return redirect('home/albums/create')->with('success', 'Album succesfully created');
     }
 }
