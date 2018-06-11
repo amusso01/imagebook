@@ -988,17 +988,28 @@ window.Vue = __webpack_require__(35);
  */
 
 var truncateString = function truncateString(str, num) {
-  return str.length > num ? str.slice(0, num > 3 ? num - 3 : num) + '...' : str;
+    return str.length > num ? str.slice(0, num > 3 ? num - 3 : num) + '...' : str;
+};
+
+Dropzone.options.uploadImage = {
+    paramName: "image_name", // The name that will be used to transfer the file
+    maxFilesize: 2, // MB
+    // maxFiles: 1,
+    acceptedFiles: 'image/*',
+    success: function success(file, response) {
+        console.log(file);
+        // console.log(response);
+    }
 };
 
 $(document).ready(function () {
-  $('[data-toggle="tooltip"]').tooltip();
+    $('[data-toggle="tooltip"]').tooltip();
 });
 
 Vue.component('example-component', __webpack_require__(38));
 
 var app = new Vue({
-  el: '#app'
+    el: '#app'
 });
 
 /***/ }),

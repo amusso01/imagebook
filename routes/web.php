@@ -27,5 +27,11 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('/home/albums', 'AlbumController');
+// Route::get('/home/albums/create', 'AlbumController@create');
 Route::post('/home/albums/store', 'AlbumController@store');
-Route::get('/home/albums/{$id})', 'AlbumController@show');
+Route::post('/home/albums/store', 'ImageController@store');
+// Route::get('/home/albums/{$id}', 'AlbumController@show');
+Route::get('home/image/create/{id}',[
+    'as'    => 'image.create',
+    'uses'  => 'ImageController@create'
+]);

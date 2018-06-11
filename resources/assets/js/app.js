@@ -19,9 +19,21 @@ window.Vue = require('vue');
 const truncateString = (str, num) =>
 str.length > num ? str.slice(0, num > 3 ? num - 3 : num) + '...' : str;
 
+   Dropzone.options.uploadImage = {
+        paramName: "image_name", // The name that will be used to transfer the file
+        maxFilesize: 2, // MB
+        // maxFiles: 1,
+        acceptedFiles: 'image/*',
+        success: function(file, response){
+            console.log(file);
+            // console.log(response);
+        }
+      };
+
+
+
 $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip();
-
 
 });
 

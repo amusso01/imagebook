@@ -14,5 +14,5 @@
     {{Form::label('cover_image', 'Cover Image')}}
     {{Form::file('cover_image')}}
 </div>
-{{Form::submit('submit', $attributes=['class'=>'btn btn-primary'])}}
+{{Form::submit('Create', $attributes=['class'=>'btn btn-primary'])}}
 {!!Form::close()!!}
