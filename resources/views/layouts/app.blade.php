@@ -11,6 +11,7 @@
     <title>{{ config('app.name', 'Image Book') }}</title>
 
     <!-- Styles -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.4.0/min/dropzone.min.css" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
@@ -23,6 +24,7 @@
     </div>
 
     <!-- Scripts -->
+    <script src="{{ asset('js/dropzone.js')}}"></script>
     <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>

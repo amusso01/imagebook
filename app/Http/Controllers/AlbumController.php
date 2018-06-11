@@ -42,9 +42,9 @@ class AlbumController extends Controller
         
         //Validate request 
         $validateData = $request->validate([
-            'name'          => 'required',
+            'name'          => 'required|max:30',
             'cover_image'   => 'image|max:1999',
-            'description'   => 'required',
+            'description'   => 'required|max:500',
         ]);
 
         
@@ -77,8 +77,8 @@ class AlbumController extends Controller
         }else{
             $filename_to_store = 'albumCover.jpg';
         }
-        //Create Album
         
+        //Create Album
         $album = new Album;
         $album->album_name = $name;
         $album->description = $description;
