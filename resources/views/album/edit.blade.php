@@ -15,14 +15,11 @@
         </div>
 
     @endif
-    @if (Session::has('success'))
-        <div class="alert-success">
-            <p>{{Session::get('success')}}</p>
-        </div>
-    @endif
 
-    <h1>Upload New Image</h1>
+    <h1>Edit {{$album->album_name}} Album</h1>
 
-    @include('inc.form.createNewImage')
+    @include('inc.form.editAlbum')
+
+    @include('inc.modal.deleteAlbum')
    
 @endsection
