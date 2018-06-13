@@ -6,12 +6,18 @@
     <div class="col-md-12">
         <nav class="navbar navbar-default">    
             <ul class="nav navbar-nav">
-                    <li><a href="{{url('home/albums/create')}}"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Create New Album 
-                    </a></li>
+                <li><a href="{{url('home/albums/create')}}"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Create New Album 
+                </a></li>
             </ul>      
         </nav>
     </div>
 </div>
+
+@if (Session::has('success'))
+        <div class="alert-success">
+            <p>{{Session::get('success')}}</p>
+        </div>
+@endif
 
 <h1 class="my-4 text-center text-lg-left">Album Gallery</h1>
 
@@ -23,7 +29,7 @@
   
     <div class="col-sm-6 col-md-4">
       <div class="thumbnail">
-          <a class="lightbox" href="{{url('/home/albums',$album->id)}}">
+          <a href="{{url('/home/albums',$album->id)}}">
               <img src="storage/album_covers/{{$album->cover_image}}" alt="Gallery {{$album->album_name}}">
           </a>
           <div class="caption">

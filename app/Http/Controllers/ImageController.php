@@ -58,7 +58,7 @@ class ImageController extends Controller
         //Upload to path
         $image_uploaded = Image::make($request->file('image_name'))->save($storage_path.'/'.$filename_to_store);
         //Upload thumbnail to path
-        $thumb_uploaded = Image::make($request->file('image_name'))->fit(300)->save($storage_path.'/'.$thumbnail);
+        $thumb_uploaded = Image::make($request->file('image_name'))->fit(280)->save($storage_path.'/'.$thumbnail);
 
       
 
@@ -70,7 +70,7 @@ class ImageController extends Controller
  
          $pic->save();
  
-         return redirect()->back();
+         return $pic;
 
     }
 }

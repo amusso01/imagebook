@@ -3,19 +3,24 @@
 @section ('content')
 
 <section class="jumbotron jumbotron-fluid text-center">
+        @if (Session::has('success'))
+        <div class="alert-success">
+            <p>{{Session::get('success')}}</p>
+        </div>
+         @endif
 
 
     
     <div class="container">
        
             <div class="col-sm-12 col-md-6">
-                <img class="img-fluid img-thumbnail" src="{{url('storage/album_covers').'/'.$album->cover_image}}" alt="Gallery {{$album->album_name}}">            
+                <img class="img-responsive img-thumbnail" src="{{url('storage/album_covers').'/'.$album->cover_image}}" alt="Gallery {{$album->album_name}}">            
             </div>
             <div class="col-sm-12 col-md-6">
                 <h1 class="jumbotron-heading">{{$album->album_name}}</h1>
                 <p class="lead text-muted">{{$album->description}}</p>
                 <p>
-                    <a href="#" class="btn btn-primary">Edit Album Info</a>
+                    <a href="{{url('home/albums/'.$album->id.'/edit')}}" class="btn btn-primary">Edit Album Info</a>
                 </p>
             </div>
             
@@ -40,6 +45,38 @@
 
 
 @include('inc.modal.upload')
+
+<div class="row text-center text-lg-left tz-gallery" id="image-gallery-container">
+
+
+   
+
+    @if (count($images) > 0)
+
+        @foreach ($images as $image)
+
+            <div class="col-md-4 col-sm-6">
+                <div class="section-box-eleven thumbnail">
+                        <figure>
+                            <a href="/storage/images/{{$album->id}}/{{$image->image_name}}" class="btn pull-left"><i class="fa fa-search"></i> View</a>
+                            <a href="#" class="btn pull-right">Edit <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+                        </figure>
+                        
+                        <img src="/storage/images/{{$album->id}}/thumb_{{$image->image_name}}" alt="{{$image->id}}-{{$album->album_name}}" class="img-responsive"/>
+                        
+                    </div>
+                </div>
+        
+
+        
+        
+        @endforeach
+        
+        @else
+        <h3>No Image To Display Upload One!!</h3>
+        @endif
+   
+</div>
 
 
 @endsection
