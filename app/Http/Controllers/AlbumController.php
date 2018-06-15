@@ -17,25 +17,44 @@ class AlbumController extends Controller
     // Auth middleware access granted to users
     public function __construct()
     {
-    $this->middleware('auth');
+        $this->middleware('auth');
     }
 
-    //get Album
-    public static function getAlbum(){
+    //Create file name to store in DB::
+    public static function newImageName($imageFile)
+    {
+         //Get file name with extension
+         $cover_image_name_ext = $imageFile->getClientOriginalName();
+            
+         //Get just Filename
+         $filename = pathinfo($cover_image_name_ext, PATHINFO_FILENAME);
+         
+         //Get extension
+         $extension = $imageFile->getClientOriginalExtension();
+         
+         //Create new filename to store
+         $filename_to_store = $filename.'_'.time().'.'.$extension;
 
+         return $filename_to_store;
+    }
+
+    //Get Album
+    public static function getAlbum()
+    {
         $albums=Album::where('user_id', Auth::id() )->get();
 
         return $albums;
     }
     
     //Create
-    public function create(){
+    public function create()
+    {
         return view('album.create');
     }
 
     //Show album alnog with images
-    public function show($id) {
-
+    public function show($id) 
+    {
         $album = Album::findOrFail($id);
 
         if($album->user_id == Auth::id()){
@@ -50,14 +69,15 @@ class AlbumController extends Controller
     }
 
     //Edit
-    public function edit($album){
-        $album=Album::find($album);
+    public function edit($album)
+    {
+        $album=Album::findOrFail($album);
         return view('album.edit', compact('album'));
     }
 
     //Update
-    public function update($album, Request $request){
-
+    public function update($album, Request $request)
+    {
        //Validate request 
        $validateData = $request->validate([
         'name'          => 'required|max:30',
@@ -79,18 +99,9 @@ class AlbumController extends Controller
     if($cover_image){
         //delete unused cover_image
         unlink(storage_path('app/public/album_covers/'.$album_to_update->cover_image));
-        
-        //Get file name with extension
-        $cover_image_name_ext = $cover_image->getClientOriginalName();
-        
-        //Get just Filename
-        $filename = pathinfo($cover_image_name_ext, PATHINFO_FILENAME);
-        
-        //Get extension
-        $extension = $cover_image->getClientOriginalExtension();
-        
+       
         //Create new filename to store
-        $filename_to_store = $filename.'_'.time().'.'.$extension;
+        $filename_to_store = $this->newImageName($cover_image);
         
         //Upload to path
         $image=Image::make($request->file('cover_image'))->fit(300)->save(storage_path('app/public/album_covers/'.$filename_to_store));
@@ -109,8 +120,8 @@ class AlbumController extends Controller
     }
 
     //Delete
-    public function destroy($album){
-
+    public function destroy($album)
+    {
         $album_to_delete = Album::findOrFail($album);
         $name = $album_to_delete->album_name;
         $album_to_delete->delete();
@@ -121,8 +132,8 @@ class AlbumController extends Controller
 
 
     // Store
-    public function store(Request $request){
-        
+    public function store(Request $request)
+    {
         //Validate request 
         $validateData = $request->validate([
             'name'          => 'required|max:30',
@@ -140,17 +151,9 @@ class AlbumController extends Controller
         
         //Check if cover image upload
         if($cover_image){
-            //Get file name with extension
-            $cover_image_name_ext = $cover_image->getClientOriginalName();
-            
-            //Get just Filename
-            $filename = pathinfo($cover_image_name_ext, PATHINFO_FILENAME);
-            
-            //Get extension
-            $extension = $cover_image->getClientOriginalExtension();
-            
+        
             //Create new filename to store
-            $filename_to_store = $filename.'_'.time().'.'.$extension;
+            $filename_to_store = $this->newImageName($cover_image);
             
             //Upload to path
             $image=Image::make($request->file('cover_image'))->fit(260)->save(storage_path('app/public/album_covers/'.$filename_to_store));
@@ -158,7 +161,7 @@ class AlbumController extends Controller
 
             // $path = $image->storeAs('public/album_covers', $filename_to_store);
         }else{
-            $filename_to_store = 'albumCover.jpg';
+            $filename_to_store = 'albumCover.png';
         }
         
         //Create Album

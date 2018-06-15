@@ -133,3 +133,33 @@
 .section-box-eleven img{
     height: 100%;
 }
+
+//Edit image nav
+#editNav{
+    ul.navbar-nav li a{
+        padding-left: 5px; 
+        padding-right: 5px; 
+    }
+    ul.navbar-nav li a i { 
+        position: relative; 
+        font-size: 32px;
+    }
+    ul.navbar-nav li a i span {
+        position: absolute; 
+        top: -2px;
+        right: -30px;
+        width: auto; 
+        margin-top: 0; 
+        padding: 3px 5px;
+        background: #ca8bdc; 
+        font-size: 12px; 
+        font-weight: 300;
+        border-radius: 4px;
+    }
+    ul.navbar-nav li a span {
+        display: inline-block; 
+        width: 100%; 
+        margin-top: 8px; 
+        -o-transition: all .3s; -moz-transition: all .3s; -webkit-transition: all .3s; -ms-transition: all .3s; transition: all .3s;
+    }
+}
