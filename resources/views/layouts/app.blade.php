@@ -18,9 +18,11 @@
 <body>
     <div id="app">
         @include('inc.topBar')
+        @yield('imageEdit')
         <div class="container">
             @yield('content')
         </div>
+
 
     </div>
 

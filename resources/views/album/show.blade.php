@@ -58,18 +58,14 @@
             <div class="col-md-4 col-sm-6">
                 <div class="section-box-eleven thumbnail">
                         <figure>
-                            <a href="/storage/images/{{$album->id}}/{{$image->image_name}}" class="btn pull-left"><i class="fa fa-search"></i> View</a>
-                            <a href="#" class="btn pull-right">Edit <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+                        <a href="{{url('home/image/'.$image->id.'/edit')}}">Edit </a>
                         </figure>
-                        
+                        <a href="/storage/images/{{$album->id}}/{{$image->image_name}}"> 
                         <img src="/storage/images/{{$album->id}}/thumb_{{$image->image_name}}" alt="{{$image->id}}-{{$album->album_name}}" class="img-responsive"/>
-                        
+                        </a>
                     </div>
                 </div>
-        
-
-        
-        
+                
         @endforeach
         
         @else

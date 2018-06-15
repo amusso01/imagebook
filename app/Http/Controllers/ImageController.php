@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Images;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Controllers\AlbumController;
 
 class ImageController extends Controller
 {
@@ -34,23 +35,14 @@ class ImageController extends Controller
         $image = $request->file('image_name');
         $album_id = $request->input('album_id');
 
-        //Get file name with extension
-        $image_name_ext = $image->getClientOriginalName();
-            
-        //Get just Filename
-        $filename = pathinfo($image_name_ext, PATHINFO_FILENAME);
-        
-        //Get extension
-        $extension = $image->getClientOriginalExtension();
-        
         //Create new filename to store
-        $filename_to_store = $filename.'_'.time().'.'.$extension;
-        //Create new thumbnail to store
+        $filename_to_store = AlbumController::newImageName($image);
         $thumbnail='thumb_'.$filename_to_store;
         
         //Storage folder path
         $storage_path = storage_path('app/public/images/'.$album_id);
 
+        //create dir if not exist
         if(!is_dir($storage_path)){
             mkdir($storage_path,0775,true);
         }
@@ -60,17 +52,25 @@ class ImageController extends Controller
         //Upload thumbnail to path
         $thumb_uploaded = Image::make($request->file('image_name'))->fit(280)->save($storage_path.'/'.$thumbnail);
 
-      
 
-
-         //Create Image
+         //Create and save Image model
          $pic = new Images;
          $pic->image_name = $filename_to_store;
          $pic->album_id = $album_id;
  
          $pic->save();
+
  
+         //return the image the response is handle with javascritp
          return $pic;
 
+    }
+
+
+    //edit
+    public function edit($id){
+        $image=Images::findOrFail($id);
+
+        return view('image.edit', compact('image'));
     }
 }

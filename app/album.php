@@ -16,7 +16,7 @@ class Album extends Model
             Storage::deleteDirectory('/public/images/'.$this->id);
         }
 
-        if(file_exists(storage_path('app/public/album_covers/'.$this->cover_image)) && $this->cover_image !== 'albumCover.jpg'){
+        if(file_exists(storage_path('app/public/album_covers/'.$this->cover_image)) && $this->cover_image !== 'albumCover.png'){
             Storage::delete('/public/album_covers/'.$this->cover_image);
         }
 
