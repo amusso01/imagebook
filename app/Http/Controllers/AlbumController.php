@@ -92,8 +92,7 @@ class AlbumController extends Controller
     $name = $request->input('name');
     $description = $request->input('description');
     $cover_image = $request->file('cover_image');
-    
-    
+
     
     //Check if cover image upload
     if($cover_image){
@@ -104,7 +103,7 @@ class AlbumController extends Controller
         $filename_to_store = $this->newImageName($cover_image);
         
         //Upload to path
-        $image=Image::make($request->file('cover_image'))->fit(300)->save(storage_path('app/public/album_covers/'.$filename_to_store));
+        $image=Image::make($request->file('cover_image'))->fit(280)->save(storage_path('app/public/album_covers/'.$filename_to_store));
 
         //update DB field
         $album_to_update->cover_image = $filename_to_store;
@@ -156,7 +155,7 @@ class AlbumController extends Controller
             $filename_to_store = $this->newImageName($cover_image);
             
             //Upload to path
-            $image=Image::make($request->file('cover_image'))->fit(260)->save(storage_path('app/public/album_covers/'.$filename_to_store));
+            $image=Image::make($request->file('cover_image'))->fit(280)->save(storage_path('app/public/album_covers/'.$filename_to_store));
 
 
             // $path = $image->storeAs('public/album_covers', $filename_to_store);
