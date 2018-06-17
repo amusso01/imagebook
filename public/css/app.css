@@ -8518,3 +8518,7 @@ button.close {
   transition: all .3s;
 }
 
+#editNav #imgEditButton {
+  margin-top: 30px;
+}
+

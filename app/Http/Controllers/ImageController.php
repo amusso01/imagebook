@@ -35,7 +35,8 @@ class ImageController extends Controller
         $image = $request->file('image_name');
         $album_id = $request->input('album_id');
 
-        //Create new filename to store
+        //Create new filename for image and thumbnail
+        //method newImageName @return the unique imagename
         $filename_to_store = AlbumController::newImageName($image);
         $thumbnail='thumb_'.$filename_to_store;
         
@@ -60,12 +61,19 @@ class ImageController extends Controller
  
          $pic->save();
 
- 
          //return the image the response is handle with javascritp
          return $pic;
-
     }
 
+    
+    //delete
+    public function destroy($id){
+        $image_to_delete = Images::findOrFail($id);
+        $album_id = $image_to_delete->album_id;
+        $image_to_delete->delete();
+
+        return redirect('home/albums/'.$album_id)->with('success', 'The image has been deleted');
+    }
 
     //edit
     public function edit($id){

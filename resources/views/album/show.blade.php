@@ -8,9 +8,6 @@
             <p>{{Session::get('success')}}</p>
         </div>
          @endif
-
-
-    
     <div class="container">
        
             <div class="col-sm-12 col-md-6">
@@ -32,7 +29,7 @@
         <div class="col-md-12">
             <nav class="navbar navbar-default">    
                 <ul class="nav navbar-nav">
-                        <li><a href="{{ url()->previous() }}"><span class="glyphicon glyphicon-triangle-left" aria-hidden="true"></span> Go Back</a></li>
+                        <li><a href="{{ url('home') }}"><span class="glyphicon glyphicon-triangle-left" aria-hidden="true"></span> Gallery</a></li>
                 
                         <li><a href="#" data-toggle="modal" data-target="#uploadModal">Upload Image</a></li>
                         
@@ -47,9 +44,6 @@
 @include('inc.modal.upload')
 
 <div class="row text-center text-lg-left tz-gallery" id="image-gallery-container">
-
-
-   
 
     @if (count($images) > 0)
 
@@ -68,9 +62,9 @@
                 
         @endforeach
         
-        @else
-        <h3>No Image To Display Upload One!!</h3>
-        @endif
+    @else
+        <h3 id="noImg">No Image To Display Upload One!!</h3>
+    @endif
    
 </div>
 

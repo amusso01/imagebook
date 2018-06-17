@@ -17,22 +17,18 @@ const ROOT_URL= window.location.protocol + '//' +window.location.host +'/';
 *
 *
 */
-
-
-   Dropzone.options.uploadImage = {
-        paramName: "image_name", // The name that will be used to transfer the file
-        maxFilesize: 2, // MB
-        acceptedFiles: 'image/*',
-        
-
-        success: function(file, response){
-            if(file.status == 'success'){
-                fileUploaded.handleSuccess(response);
-            }else{
-                fileUploaded.handleError(response);
-            }
+Dropzone.options.uploadImage = {
+    paramName: "image_name", // The name that will be used to transfer the file
+    maxFilesize: 2, // MB
+    acceptedFiles: 'image/*',
+    success: function(file, response){
+        if(file.status == 'success'){
+            fileUploaded.handleSuccess(response);
+        }else{
+            fileUploaded.handleError(response);
         }
-      };
+    }
+};
 
 var fileUploaded = { 
     handleError: function(response){
@@ -53,6 +49,7 @@ var fileUploaded = {
                         </a>\
                     </div>\
         </div>');
+        $('#noImg').hide();
         baguetteBox.run('#image-gallery-container');
     }
 }

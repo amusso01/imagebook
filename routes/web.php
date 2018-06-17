@@ -32,11 +32,11 @@ Route::resources([
     '/home/albums'  => 'AlbumController',
     'home/image'    => 'ImageController',
     ]);
-// Route::get('/home/albums/create', 'AlbumController@create');
-// Route::post('/home/albums/store', 'AlbumController@store');
 Route::post('/home/image/store', 'ImageController@store')->name('image.store');
 Route::get('home/albums',[
     'as'    => 'albums.store',
     'uses'  => 'AlbumController@store'
 ]);
+
+// Route::get('home/image/{id}/greyscale', 'ManipulateController@greyscale' ); Implementation for image manipulation
 

@@ -988,12 +988,10 @@ var ROOT_URL = window.location.protocol + '//' + window.location.host + '/';
 *
 *
 */
-
 Dropzone.options.uploadImage = {
     paramName: "image_name", // The name that will be used to transfer the file
     maxFilesize: 2, // MB
     acceptedFiles: 'image/*',
-
     success: function success(file, response) {
         if (file.status == 'success') {
             fileUploaded.handleSuccess(response);
@@ -1020,6 +1018,7 @@ var fileUploaded = {
                         </a>\
                     </div>\
         </div>');
+        $('#noImg').hide();
         baguetteBox.run('#image-gallery-container');
     }
 
