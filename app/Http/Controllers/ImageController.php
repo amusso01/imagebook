@@ -18,14 +18,24 @@ class ImageController extends Controller
     $this->middleware('auth');
     }
 
+    //Return the extension of an image
+    public function mime ($image)
+    {
+        $mime = Image::make($image)->mime();
+        $mime_array = explode('/', $mime);
+      
+        return $mime_array[1];
+    }
+
     //Create
-    public function create($id){
+    public function create($id)
+    {
         return view('image.create');
     }
 
     //Store image
-    public function store(Request $request){
-        
+    public function store(Request $request)
+    {
         //Validate image 
         $validateData = $request->validate([
             'image_name'    => 'image',
@@ -67,7 +77,8 @@ class ImageController extends Controller
 
     
     //delete
-    public function destroy($id){
+    public function destroy($id)
+    {
         $image_to_delete = Images::findOrFail($id);
         $album_id = $image_to_delete->album_id;
         $image_to_delete->delete();
@@ -76,9 +87,21 @@ class ImageController extends Controller
     }
 
     //edit
-    public function edit($id){
+    public function edit($id)
+    {
         $image=Images::findOrFail($id);
 
         return view('image.edit', compact('image'));
+    }
+
+    //download
+    public function download($id)
+    {
+        $image = Images::findOrFail($id);
+        $image_to_download = storage_path('App/public/images/'.$image->album_id.'/'.$image->image_name);
+        $mime = $this->mime($image_to_download);
+        $name = 'imageBook_'.$image->id.'.'.$mime;
+        
+        return response()->download($image_to_download, $name);
     }
 }

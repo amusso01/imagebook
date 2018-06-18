@@ -21,8 +21,6 @@
         </div>
     @endif
 
-    <h1>Create New Album</h1>
-
     @include('inc.form.createNewAlbum')
    
 @endsection

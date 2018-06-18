@@ -16,7 +16,7 @@
 
     @endif
 
-    <h1>Edit {{$album->album_name}} Album</h1>
+   
 
     @include('inc.form.editAlbum')
 

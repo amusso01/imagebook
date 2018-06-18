@@ -20,7 +20,6 @@
                     <a href="{{url('home/albums/'.$album->id.'/edit')}}" class="btn btn-primary">Edit Album Info</a>
                 </p>
             </div>
-            
         
     </div>
 </section>
@@ -38,9 +37,6 @@
         </div>
     </div>
 
-
-
-
 @include('inc.modal.upload')
 
 <div class="row text-center text-lg-left tz-gallery" id="image-gallery-container">
@@ -52,7 +48,7 @@
             <div class="col-md-4 col-sm-6">
                 <div class="section-box-eleven thumbnail">
                         <figure>
-                        <a href="{{url('home/image/'.$image->id.'/edit')}}">Edit </a>
+                        <a href="{{url('home/image/'.$image->id.'/edit')}}"><i class="glyphicon glyphicon-cog"></i> Edit</a>
                         </figure>
                         <a href="/storage/images/{{$album->id}}/{{$image->image_name}}"> 
                         <img src="/storage/images/{{$album->id}}/thumb_{{$image->image_name}}" alt="{{$image->id}}-{{$album->album_name}}" class="img-responsive"/>
@@ -67,6 +63,5 @@
     @endif
    
 </div>
-
 
 @endsection

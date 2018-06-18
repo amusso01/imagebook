@@ -9,6 +9,8 @@ class Album extends Model
 {
     protected $table ='albums';
 
+    public static $defaultCoverImage = 'imagebook-logo.jpg';
+
     protected $fillable =array('user_id','album_name','description','cover_image');
 
     public function delete(){
@@ -16,7 +18,7 @@ class Album extends Model
             Storage::deleteDirectory('/public/images/'.$this->id);
         }
 
-        if(file_exists(storage_path('app/public/album_covers/'.$this->cover_image)) && $this->cover_image !== 'albumCover.png'){
+        if(file_exists(storage_path('app/public/album_covers/'.$this->cover_image)) && $this->cover_image !== Album::$defaultCoverImage){
             Storage::delete('/public/album_covers/'.$this->cover_image);
         }
 

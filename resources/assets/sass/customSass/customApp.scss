@@ -98,14 +98,12 @@
 }
 
 //Album Image main page
-
-
 .tz-gallery .section-box-eleven{
-    height: 250px;
+    height: 280px;
     background: radial-gradient(#6e6e6e,#2f2f2f);
     background: -webkit-radial-gradient(#6e6e6e,#2f2f2f);
     background: -moz-radial-gradient(#6e6e6e,#2f2f2f);
-    color: #fff;
+    // color: #fff;
     position: relative;
     overflow:hidden;
     max-width: 320px;
@@ -123,9 +121,15 @@
     padding: 10px 15px;
     width: 100%;
     bottom: -25%;
+    font-size: 1.35em;
     transition: ease-in-out .5s;
     background: rgba(0, 0, 0, 0.71);
-    border-top: 1px solid #fff;
+    a{
+        // font-weight: bold;
+        &:hover{
+            text-decoration: none;
+        }
+    }
 }
 .section-box-eleven:hover figure {
     bottom: 0;
@@ -166,6 +170,11 @@
     #imgEditButton{
         margin-top: 30px;
     }
+}
 
-   
+//create new album
+.create-new{
+    .col-md-7{
+        margin-bottom: 10px;
+    }
 }
