@@ -96,8 +96,10 @@ class AlbumController extends Controller
     
     //Check if cover image upload
     if($cover_image){
-        //delete unused cover_image
-        unlink(storage_path('app/public/album_covers/'.$album_to_update->cover_image));
+        if($album_to_update->cover_image !== Album::$defaultCoverImage){
+            //delete unused cover_image
+            unlink(storage_path('app/public/album_covers/'.$album_to_update->cover_image));
+        }
        
         //Create new filename to store
         $filename_to_store = $this->newImageName($cover_image);
@@ -150,17 +152,17 @@ class AlbumController extends Controller
         
         //Check if cover image upload
         if($cover_image){
-        
+            
             //Create new filename to store
             $filename_to_store = $this->newImageName($cover_image);
             
             //Upload to path
             $image=Image::make($request->file('cover_image'))->fit(280)->save(storage_path('app/public/album_covers/'.$filename_to_store));
-
-
+            
+            
             // $path = $image->storeAs('public/album_covers', $filename_to_store);
         }else{
-            $filename_to_store = 'albumCover.png';
+            $filename_to_store = Album::$defaultCoverImage ;
         }
         
         //Create Album

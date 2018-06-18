@@ -1002,7 +1002,9 @@ Dropzone.options.uploadImage = {
 };
 
 var fileUploaded = {
-    handleError: function handleError(response) {},
+    handleError: function handleError(response) {
+        console.log(response);
+    },
     handleSuccess: function handleSuccess(response) {
         var imageContainer = $('#image-gallery-container');
         var imgSrcThumb = '/storage/images/' + response.album_id + '/thumb_' + response.image_name;
@@ -1010,13 +1012,13 @@ var fileUploaded = {
         var ImgEdit = ROOT_URL + 'home/image/' + response.id + '/edit';
         $(imageContainer).append('<div class="col-sm-6 col-md-4">\
         <div class="section-box-eleven thumbnail">\
-                        <figure>\
-                            <a href="' + ImgEdit + '">Edit</a>\
-                        </figure>\
-                        <a href="' + imgSrc + '">\
-                        <img class="img-responsive" src="' + imgSrcThumb + '">\
-                        </a>\
-                    </div>\
+            <figure>\
+                <a href="' + ImgEdit + '"><i class="glyphicon glyphicon-cog"></i> Edit</a>\
+            </figure>\
+            <a href="' + imgSrc + '">\
+                <img class="img-responsive" src="' + imgSrcThumb + '">\
+            </a>\
+        </div>\
         </div>');
         $('#noImg').hide();
         baguetteBox.run('#image-gallery-container');

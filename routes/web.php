@@ -15,28 +15,32 @@ use Illuminate\Support\Facades\Auth;
 */
 
 
-
+//Get
 Route::get('/', function () {
     if(Auth::guest()){
         return view('welcome');
     }
     return redirect('home');
 });
-
-Auth::routes();
-
-
-
 Route::get('/home', 'HomeController@index')->name('home');
-Route::resources([
-    '/home/albums'  => 'AlbumController',
-    'home/image'    => 'ImageController',
-    ]);
-Route::post('/home/image/store', 'ImageController@store')->name('image.store');
+Route::get('home/image/{id}/download', 'ImageController@download')->name('image.download');
 Route::get('home/albums',[
     'as'    => 'albums.store',
     'uses'  => 'AlbumController@store'
 ]);
+
+//Auth
+Auth::routes();
+
+//Resources
+Route::resources([
+    '/home/albums'  => 'AlbumController',
+    'home/image'    => 'ImageController',
+    ]);
+
+//Post
+Route::post('/home/image/store', 'ImageController@store')->name('image.store');
+
 
 // Route::get('home/image/{id}/greyscale', 'ManipulateController@greyscale' ); Implementation for image manipulation
 

@@ -12,7 +12,7 @@
                 </div>
                 <div class="col-xs-9">
                     <div id="imgEditButton" class="btn-group btn-justified pull-right">
-                        <a class="btn btn-default btn-primary " href="#">Download</a>
+                        <a class="btn btn-default btn-primary " href="{{url('home/image/'.$image->id.'/download')}}">Download</a>
                         <button type="button" class="btn btn-danger" data-toggle="modal" data-target=".modal">Delete</button>
                     </div>
                 </div>

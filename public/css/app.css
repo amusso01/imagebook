@@ -8446,10 +8446,9 @@ button.close {
 }
 
 .tz-gallery .section-box-eleven {
-  height: 250px;
+  height: 280px;
   background: radial-gradient(#6e6e6e, #2f2f2f);
   background: -moz-radial-gradient(#6e6e6e, #2f2f2f);
-  color: #fff;
   position: relative;
   overflow: hidden;
   max-width: 320px;
@@ -8473,10 +8472,14 @@ button.close {
   padding: 10px 15px;
   width: 100%;
   bottom: -25%;
+  font-size: 1.35em;
   -webkit-transition: ease-in-out .5s;
   transition: ease-in-out .5s;
   background: rgba(0, 0, 0, 0.71);
-  border-top: 1px solid #fff;
+}
+
+.section-box-eleven figure a:hover {
+  text-decoration: none;
 }
 
 .section-box-eleven:hover figure {
@@ -8520,5 +8523,9 @@ button.close {
 
 #editNav #imgEditButton {
   margin-top: 30px;
+}
+
+.create-new .col-md-7 {
+  margin-bottom: 10px;
 }
 
