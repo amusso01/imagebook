@@ -61,7 +61,13 @@
     @else
         <h3 id="noImg">No Image To Display Upload One!!</h3>
     @endif
-   
+
+    
 </div>
+
+    <div class="pagination justify-content-center">
+        {{$images->links()}}
+    </div>
+
 
 @endsection

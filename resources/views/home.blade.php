@@ -48,6 +48,7 @@
 
 </div>
 
-@include ('inc.pagination')
-
+<div class="pagination justify-content-center">
+    {{$albums->links()}}
+</div>
 @endsection
