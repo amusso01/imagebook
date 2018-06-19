@@ -1011,15 +1011,15 @@ var fileUploaded = {
         var imgSrc = '/storage/images/' + response.album_id + '/' + response.image_name;
         var ImgEdit = ROOT_URL + 'home/image/' + response.id + '/edit';
         $(imageContainer).append('<div class="col-sm-6 col-md-4">\
-        <div class="section-box-eleven thumbnail">\
-            <figure>\
-                <a href="' + ImgEdit + '"><i class="glyphicon glyphicon-cog"></i> Edit</a>\
-            </figure>\
-            <a href="' + imgSrc + '">\
-                <img class="img-responsive" src="' + imgSrcThumb + '">\
-            </a>\
-        </div>\
-        </div>');
+            <div class="section-box-eleven thumbnail">\
+                <figure>\
+                    <a href="' + ImgEdit + '"><i class="glyphicon glyphicon-cog"></i> Edit</a>\
+                </figure>\
+                <a href="' + imgSrc + '">\
+                    <img class="img-responsive" src="' + imgSrcThumb + '">\
+                </a>\
+            </div>\
+            </div>');
         $('#noImg').hide();
         baguetteBox.run('#image-gallery-container');
     }

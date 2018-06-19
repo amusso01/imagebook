@@ -41,7 +41,7 @@ class AlbumController extends Controller
     //Get Album
     public static function getAlbum()
     {
-        $albums=Album::where('user_id', Auth::id() )->get();
+        $albums=Album::where('user_id', Auth::id() )->paginate(6);
 
         return $albums;
     }
@@ -52,14 +52,14 @@ class AlbumController extends Controller
         return view('album.create');
     }
 
-    //Show album alnog with images
+    //Show album along with images
     public function show($id) 
     {
         $album = Album::findOrFail($id);
 
         if($album->user_id == Auth::id()){
             
-            $images = Images::where('album_id', $id)->with('user')->get();
+            $images = Images::where('album_id', $id)->with('user')->paginate(9);
             
             return view('album.show', compact('album', 'images'));
         }else{
