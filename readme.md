@@ -16,9 +16,9 @@ Visit [Imagebook](http://165.227.228.117/) create an account and start creating 
  
 ## Authors
 
-* **Andrea Musso** - [amuisso01](https://github.com/amusso01)
+* **Andrea Musso** - [amusso01](https://github.com/amusso01)
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License
 
